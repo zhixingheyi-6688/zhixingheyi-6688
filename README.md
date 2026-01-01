@@ -1,14 +1,45 @@
-1.实现目标
-使用 frida  分析并主动调用某信营业厅的签名算法。
+1. Objective
+Reverse engineer the signature algorithm of the [App Name] (China Telecom App) using Frida and implement an active call (RPC/Function Invocation) to the signature method.
 
-2.操作环境
-mac 系统
+2. Environment & Tools
+Operating System: macOS
 
-frida-ios-dump：砸壳
+Decryption: frida-ios-dump (for IPA decryption/dumping)
 
-Charles：抓包
+Traffic Analysis: Charles Proxy
 
-已越狱 iOS 设备：脱壳及 frida 调试
+Hardware: Jailbroken iOS device (for dumping and dynamic debugging)
 
-IDA Pro：静态分析
+Static Analysis: IDA Pro
+
+3. Analysis Process
+Phase A: Traffic Interception (SSL Unpinning)
+Initial Observation: When attempting to capture traffic, the following error occurs:
+
+"The certificate for this server is invalid. You might be connecting to a server that is pretending to be 'appgologin.189.cn'..."
+
+Critical Step: SSL Pinning must be bypassed before the application's network traffic can be inspected.
+
+Target API (Login Example): https://appgologin.xxx.cn:xxxx/login/client/userLoginNormal
+
+<img width="3482" height="1742" alt="image" src="https://github.com/user-attachments/assets/26b53dec-eefc-42fc-83fb-408947aa75b9" />
+
+图中登录封包参数：
+
+loginAuthCipherAsymmertric的本质是rsa算法！
+
+
+ 
+
+b.算法
+
+ida pro 中静态分析，rsa算法函数调用层次如下：
+
+1.+[Utils createRSAStringWithPhone:authentication:timestamp:slidingTime:percentage:]
+
+2.+[RSAEncryptor encryptString:publicKey:]
+
+3.+[RSAEncryptor encryptData:publicKey:]
+
+......
 
