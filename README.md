@@ -1,7 +1,8 @@
 1. Objective
+
    Reverse engineer the signature algorithm of the [App Name] (China Telecom App) using Frida and implement an active call (RPC/Function Invocation) to the signature method.
 
-2. Environment & Tools
+3. Environment & Tools
    Operating System: macOS
 
    Decryption: frida-ios-dump (for IPA decryption/dumping)
@@ -12,7 +13,7 @@
 
    Static Analysis: IDA Pro
 
-3. Analysis Process
+4. Analysis Process
    Phase A: Traffic Interception (SSL Unpinning)
    Initial Observation: When attempting to capture traffic, the following error occurs:
 
