@@ -1,5 +1,5 @@
 1. Objective
-Reverse engineer the signature algorithm of the [App Name] (China Telecom App) using Frida and implement an active call (RPC/Function Invocation) to the signature method.
+   Reverse engineer the signature algorithm of the [App Name] (China Telecom App) using Frida and implement an active call (RPC/Function Invocation) to the signature method.
 
 2. Environment & Tools
    Operating System: macOS
