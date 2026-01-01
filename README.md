@@ -1,16 +1,14 @@
-## Hi there 👋
+1.实现目标
+使用 frida  分析并主动调用某信营业厅的签名算法。
 
-<!--
-**zhixingheyi-6688/zhixingheyi-6688** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+2.操作环境
+mac 系统
 
-Here are some ideas to get you started:
+frida-ios-dump：砸壳
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+Charles：抓包
+
+已越狱 iOS 设备：脱壳及 frida 调试
+
+IDA Pro：静态分析
+
