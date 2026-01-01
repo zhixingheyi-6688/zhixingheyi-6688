@@ -3,18 +3,21 @@
    Reverse engineer the signature algorithm of the [App Name] (China Telecom App) using Frida and implement an active call (RPC/Function Invocation) to the signature method.
 
 3. Environment & Tools
+
    Operating System: macOS
 
    Decryption: frida-ios-dump (for IPA decryption/dumping)
 
-   Traffic Analysis: Charles Proxy
+   Traffic Analysis: Reqable Proxy
 
    Hardware: Jailbroken iOS device (for dumping and dynamic debugging)
 
    Static Analysis: IDA Pro
 
-4. Analysis Process
+5. Analysis Process
+
    Phase A: Traffic Interception (SSL Unpinning)
+
    Initial Observation: When attempting to capture traffic, the following error occurs:
 
    "The certificate for this server is invalid. You might be connecting to a server that is pretending to be 'appgologin.189.cn'..."
@@ -26,9 +29,11 @@
 <img width="3482" height="1742" alt="image" src="https://github.com/user-attachments/assets/26b53dec-eefc-42fc-83fb-408947aa75b9" />
 
    Login Packet Parameter Analysis
+   
    The parameter loginAuthCipherAsymmertric is fundamentally based on the RSA algorithm.
 
    B. Algorithm Analysis
+   
    Through static analysis in IDA Pro, the call hierarchy of the RSA algorithm functions is identified as follows:
 
    +[Utils createRSAStringWithPhone:authentication:timestamp:slidingTime:percentage:]
