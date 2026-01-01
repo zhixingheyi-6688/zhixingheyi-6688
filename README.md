@@ -24,22 +24,23 @@ Target API (Login Example): https://appgologin.xxx.cn:xxxx/login/client/userLogi
 
 <img width="3482" height="1742" alt="image" src="https://github.com/user-attachments/assets/26b53dec-eefc-42fc-83fb-408947aa75b9" />
 
-图中登录封包参数：
+Login Packet Parameter Analysis
+The parameter loginAuthCipherAsymmertric is fundamentally based on the RSA algorithm.
 
-loginAuthCipherAsymmertric的本质是rsa算法！
+B. Algorithm Analysis
+Through static analysis in IDA Pro, the call hierarchy of the RSA algorithm functions is identified as follows:
 
++[Utils createRSAStringWithPhone:authentication:timestamp:slidingTime:percentage:]
 
- 
+Purpose: High-level wrapper that collects user data and prepares it for encryption.
 
-b.算法
++[RSAEncryptor encryptString:publicKey:]
 
-ida pro 中静态分析，rsa算法函数调用层次如下：
+Purpose: Converts the input string into a data format suitable for the encryption engine.
 
-1.+[Utils createRSAStringWithPhone:authentication:timestamp:slidingTime:percentage:]
++[RSAEncryptor encryptData:publicKey:]
 
-2.+[RSAEncryptor encryptString:publicKey:]
-
-3.+[RSAEncryptor encryptData:publicKey:]
+Purpose: The core encryption logic that performs the RSA transformation using the public key.
 
 ......
 
